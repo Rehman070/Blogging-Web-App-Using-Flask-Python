@@ -1,0 +1,27 @@
+{% extends "Main.html" %}
+
+{% block title %}
+<title>Blogs</title>
+{% endblock title %}
+
+{% block body %}
+<div class="row mb-4" style=margin:40px;">
+    
+    <div class="col-md-3">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <h3 class="mb-0">{{ blog.tit_name }}</h3>
+                <div class="mb-1 text-muted">{{ blog.pub_date.year }}</div>
+                <p class="card-text mb-auto">{{ blog.content }}</p>
+                <i>
+                    <p class="card-text mb-auto" style="color: grey;">{{ blog.author }}</p>
+                </i>
+                <div class="row-12" style="margin-top:20px;">
+                    <a href="/delete/{{blog.blog_id}}"><button type="submit" class="btn btn-dark">Delete</button></a>
+                    <a href="/edit/{{blog.blog_id}}"><button type="submit" class="btn btn-dark">Edit</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

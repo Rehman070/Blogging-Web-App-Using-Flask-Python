@@ -1,0 +1,54 @@
+{% extends "Main.html" %}
+
+{% block title %}
+<title>Home</title>
+{% endblock title %}
+
+
+{% block body %}
+<div class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for category, message in messages %}
+        <div class="alert alert-success" role="alert" alert-dismissible fade show>
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="margin-left: 700px;"></button>
+        </div>
+        
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+</div>
+<div class="container">
+
+<main class="container">
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark" style="margin-top: 10px;">
+        <div class="col-md-6 px-0">
+            <h1 class="display-4 fst-italic">Title of a longer featured blog post</h1>
+            <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and
+                efficiently about what’s most interesting in this post’s contents.</p>
+            <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+        </div>
+    </div>
+</main>
+</div>
+
+<div class="row mb-3" style= margin-left:116px; margin-right:116px; margin-bottom:40px; ">
+{% for blog in blogs %}
+<div class="col-md-3">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0">{{ blog.tit_name }}</h3>
+            <div class="mb-1 text-muted">{{ blog.pub_date.year }}</div>
+            <p class="card-text mb-auto">{{ blog.content }}</p>
+            <i><p class="card-text mb-auto"  style="color: grey;">{{ blog.author }}</p></i>
+            <a href="/blogs_deatil/{{blog.blog_id}}" class="stretched-link">Continue reading</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+{% endblock body %}
+
